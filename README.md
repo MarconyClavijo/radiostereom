@@ -8,7 +8,7 @@
 <body>
     <h1>¡Bienvenidos a Radio Stereo M!</h1>
     <audio controls autoplay>
-        <source src="http://sonic.globalstream.pro:8108" type="audio/mpeg">
+        <source src="http://sonic.globalstream.pro/8108" type="audio/mpeg">
         Tu navegador no soporta audio en línea.
     </audio>
 </body>
