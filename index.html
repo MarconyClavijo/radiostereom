@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+[6:11 p. m., 18/5/2025] Marcony: <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -33,32 +33,88 @@
       color: #000;
       border-radius: 30px;
       text-decoration: none;
+…
+[6:27 p. m., 18/5/2025] Marcony: <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Radio Stereo M</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #002f4b, #dc4225);
+      color: white;
+      text-align: center;
+    }
+    header {
+      padding: 30px;
+    }
+    .logo {
+      width: 150px;
+    }
+    .titulo {
+      font-size: 2em;
+      margin-top: 10px;
+    }
+    .botones {
+      margin: 20px 0;
+    }
+    .botones a {
+      text-decoration: none;
+      background: #ffcc00;
+      color: black;
+      padding: 12px 20px;
+      margin: 10px;
+      border-radius: 30px;
       font-weight: bold;
+      display: inline-block;
       transition: 0.3s;
     }
     .botones a:hover {
-      background: #fff;
-      color: #1e3c72;
+      background: white;
+      color: #dc4225;
+    }
+    .modelo {
+      width: 250px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+      margin-top: 20px;
+    }
+    .player {
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 20px;
+      max-width: 400px;
+    }
+    .player audio {
+      width: 100%;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <img src="https://i.postimg.cc/L8bjb6K5/1687464033296.png" class="logo" alt="Logo Radio Stereo M">
-    <h1>¡Bienvenidos a Radio Stereo M!</h1>
-    <p>Desde Sullana para el mundo</p>
+    <img src="https://i.postimg.cc/L8bjb6K5/1687464033296.png" alt="Radio Stereo M" class="logo">
+    <div class="titulo">¡Radio Stereo M, 101.5 FM desde Sullana!</div>
   </header>
 
   <div class="botones">
-    <a href="https://www.facebook.com/share/1Dib9eQUFD/" target="_blank">Facebook</a>
     <a href="https://wa.me/51984412853" target="_blank">WhatsApp Saludos</a>
     <a href="https://wa.me/51942883375" target="_blank">Publicidad</a>
+    <a href="https://www.facebook.com/share/1Dib9eQUFD/" target="_blank">Facebook</a>
   </div>
 
-  <img src="https://i.postimg.cc/zXh43fGj/modelo-con-audifonos.jpg" class="modelo" alt="Modelo con audífonos">
+  <img src="https://i.postimg.cc/QxBmHtfR/modelo-audifonos.jpg" alt="Modelo con audífonos" class="modelo">
 
-  <p style="margin-top: 30px;">¡Sintoniza nuestra radio online las 24 horas!</p>
+  <div class="player">
+    <h3 style="color: #333;">Escúchanos en vivo</h3>
+    <audio controls autoplay>
+      <source src="https://stream.zeno.fm/your_stream_url" type="audio/mpeg">
+      Tu navegador no soporta el reproductor de audio.
+    </audio>
+  </div>
 
 </body>
 </html>
