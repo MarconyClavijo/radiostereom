@@ -3,32 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alcalde de Sullana sufre violento asalto</title>
+    <title>Noticia - Asalto al alcalde de Sullana</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Raleway', sans-serif;
-            background-color: #ffffff;
+            background-color: #f0f8ff;
             margin: 0;
-            padding: 20px;
-            color: #333;
+            padding: 0;
+            color: #000;
         }
-        img {
+        header {
+            background-color: #0044cc;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        img.logo {
+            width: 120px;
+            margin: 5px auto;
+        }
+        nav {
+            text-align: center;
+            margin-top: 10px;
+        }
+        nav a {
+            background-color: #0044cc;
+            color: white;
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 5px;
+            display: inline-block;
+        }
+        nav a:hover {
+            background-color: #002a80;
+        }
+        #stream {
+            margin: 10px auto;
+            width: 80%;
+            max-width: 400px;
+            height: 80px;
+        }
+        .contenido {
+            padding: 20px;
+            max-width: 900px;
+            margin: auto;
+            text-align: justify;
+        }
+        .contenido img {
             max-width: 100%;
-            height: auto;
             margin: 20px 0;
         }
-        h1 {
-            color: #0044cc;
+        footer {
+            background-color: #eaeaea;
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
-    <h1>Alcalde de Sullana sufre violento asalto</h1>
-    <img src="http://imgfz.com/i/UD7VN8A.jpeg" alt="Alcalde de Sullana">
-    <p>Sucedió la tarde del domingo 18 de mayo. El alcalde de Sullana, Marlem Mogollón Meca, fue víctima del crimen organizado mientras almorzaba en una chacra familiar en Chulucanas, región Piura.</p>
-    <p>De acuerdo a la información obtenida, seis personas fuertemente armadas y con los rostros cubiertos llegaron en motocicletas hasta el lugar donde se encontraba el burgomaestre, acompañado de su esposa y su madre de 93 años. Los delincuentes los redujeron, apuntando directamente a la cabeza del alcalde amenazándolo de muerte a él y a su madre, golpearon a su esposa en la cabeza, robando pertenencias, celulares, dinero y documentos personales.</p>
-    <p>La familia ha expresado su preocupación por la seguridad de la autoridad edil y responsabiliza al Ministerio del Interior por no brindar garantías, a pesar de las amenazas previas recibidas. Este ataque se da en medio del proceso de investigación por la caída de la Caja Municipal de Sullana.</p>
-    <p>Se exige una investigación profunda para dar con los responsables. “Esto no ha sido un asalto común, ha sido un acto de amedrentamiento”, declaró un familiar cercano.</p>
-    <p>La Policía Nacional aún no ha emitido un pronunciamiento oficial. La inseguridad en la región continúa siendo un problema urgente.</p>
+
+<header>
+    <h1>Stereo M 101.5 FM</h1>
+    <img src="https://i.postimg.cc/L8bjb6K5/1687464033296.png" alt="Logo Stereo M" class="logo">
+</header>
+
+<nav>
+    <a href="../index.html">Inicio</a>
+</nav>
+
+<div id="stream"></div>
+
+<div class="contenido">
+    <h2>Alcalde de Sullana sufre violento asalto: lo encañonan amenazándolo de muerte frente a su madre y esposa</h2>
+    <p><strong>Domingo 18 de mayo – Chulucanas, Piura.</strong></p>
+    <img src="http://imgfz.com/i/UD7VN8A.jpeg" alt="Noticia Marlem Mogollón">
+    <p>El alcalde de Sullana, Marlem Mogollón Meca, fue víctima del crimen organizado, sufriendo un violento asalto mientras almorzaba en una chacra familiar.</p>
+    <p>Seis sujetos armados con los rostros cubiertos llegaron en motocicletas al lugar. Redujeron al alcalde, su esposa y su madre de 93 años, amenazándolos de muerte y apuntando directamente a la cabeza del burgomaestre. Golpearon a su esposa, robando pertenencias, celulares, dinero y documentos personales.</p>
+    <p>Familiares responsabilizan al Ministerio del Interior y al general de la Macro Región por la falta de garantías, pues el alcalde habría recibido amenazas justo cuando se inicia la investigación sobre la liquidación de la Caja Municipal de Sullana.</p>
+    <p>“Esto no ha sido un asalto común, ha sido un acto de amedrentamiento”, declaró un familiar.</p>
+    <p>La Policía Nacional aún no emite un pronunciamiento oficial. Este hecho refleja nuevamente la grave situación de inseguridad que se vive en la región.</p>
+    <p>Desde Stereo M, nos solidarizamos con las víctimas de la violencia e instamos a las autoridades a actuar con firmeza y justicia.</p>
+</div>
+
+<footer>
+    Diseño y desarrollo web por Marcony Clavijo | Innovación que conecta.
+</footer>
+
+<!-- Reproductor reducido -->
+<script src="https://sistemahost.com/playergenerator/js/jquery-3.2.1.min.js"></script>
+<script src="https://sistemahost.com/playergenerator/js/player.js"></script>
+<script> 
+    $('#stream').lunaradio({
+        streamurl: 'http://sonic.globalstream.pro/8108/',
+        radioname: 'Stereo M',
+        coverimage: '',
+        onlycoverimage: false,
+        userinterface: 'small',
+        backgroundcolor: '#ffffff',
+        fontcolor: '#000000',
+        hightlightcolor: '#6c757d',
+        fontname: 'Raleway',
+        googlefont: 'Raleway:wght@100',
+        fontratio: '0.4',
+        scroll: 'true',
+        coverstyle: 'animated',
+        usevisualizer: 'real',
+        visualizertype: '1',
+        streamtype: 'shoutcast2',
+        shoutcastpath: '/stream',
+        shoutcastid: '1',
+        autoplay: 'true',
+        metadatainterval: '5000',
+        volume: '100',
+        usestreamcorsproxy: 'true'
+    }); 
+</script>
+
 </body>
 </html>
