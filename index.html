@@ -1,98 +1,99 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html><html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Radio Stereo M</title>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet"/>
-  <style>
-    body {
-      font-family: 'Raleway', sans-serif;
-      background-color: #004aad;
-      color: #fff;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }
-    header {
-      padding: 20px;
-    }
-    header img {
-      max-width: 250px;
-    }
-    .reproductor {
-      margin: 20px auto;
-      max-width: 90%;
-    }
-    .botones {
-      margin: 30px 0;
-    }
-    .botones a {
-      display: inline-block;
-      margin: 10px;
-      padding: 10px 20px;
-      background-color: #ffffff;
-      color: #004aad;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
-    }
-    .footer {
-      margin-top: 40px;
-      font-size: 0.9em;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stereo M 101.5 FM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Raleway', sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #0044cc;
+            color: white;
+            padding: 20px;
+        }
+        img.logo {
+            width: 180px;
+            margin: 10px auto;
+        }
+        .buttons {
+            margin: 20px;
+        }
+        .buttons a {
+            display: inline-block;
+            background-color: #0044cc;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            margin: 5px;
+            border-radius: 5px;
+        }
+        .buttons a:hover {
+            background-color: #002a80;
+        }
+        #stream {
+            margin: 30px auto;
+            width: 90%;
+            max-width: 600px;
+            height: 300px;
+        }
+        footer {
+            background-color: #eaeaea;
+            padding: 10px;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <h1>Stereo M 101.5 FM</h1>
+        <img src="https://i.postimg.cc/L8bjb6K5/1687464033296.png" alt="Logo Stereo M" class="logo">
+    </header><div id="stream"></div>
 
-  <header>
-    <img src="https://i.postimg.cc/L8bjb6K5/1687464033296.png" alt="Logo Stereo M" />
-    <h1>¡Bienvenidos a Stereo M 101.5 FM!</h1>
-  </header>
-
-  <div class="reproductor">
-    <div id="stream" style="width:auto; height:300px;"></div>
-  </div>
-
-  <div class="botones">
-    <a href="https://play.google.com/store/apps/details?id=com.innovatel.radiostereom" target="_blank">Descargar App</a>
+<div class="buttons">
+    <a href="https://play.google.com/store/apps/details?id=com.innovatel.radiostereom" target="_blank">Descarga la App</a>
     <a href="https://www.facebook.com/share/1Dib9eQUFD/" target="_blank">Facebook</a>
-    <a href="https://wa.me/51984412853" target="_blank">WhatsApp Saludos</a>
-    <a href="https://wa.me/51942883375" target="_blank">Publicidad</a>
-  </div>
+    <a href="https://wa.me/51984412853" target="_blank">WhatsApp Oyentes</a>
+    <a href="https://wa.me/51942883375" target="_blank">Contratos Publicidad</a>
+</div>
 
-  <div class="footer">
-    Stereo M - En Sullana todos dicen: ¡Stereo M, 101.5 FM… Me gusta!
-  </div>
+<footer>
+    En Sullana todos dicen: ¡Stereo M, 101.5 FM… Me gusta!
+</footer>
 
-  <!-- Scripts del reproductor -->
-  <script src="https://sistemahost.com/playergenerator/js/jquery-3.2.1.min.js"></script>
-  <script src="https://sistemahost.com/playergenerator/js/player.js"></script>
-  <script> 
-    $('#stream').lunaradio({     
-      streamurl: 'https://sonic.globalstream.pro:8108', 
-      radioname: 'Stereo M', 
-      coverimage: '', 
-      onlycoverimage: false,     
-      userinterface: 'big',     
-      backgroundcolor: '#ffffff', 
-      fontcolor: '#000000',     
-      hightlightcolor: '#6c757d',     
-      fontname: 'Raleway', 
-      googlefont: 'Raleway:wght@100',     
-      fontratio: '0.4',     
-      scroll: 'true', 
-      coverstyle: 'animated',     
-      usevisualizer: 'real',     
-      visualizertype: '1', 
-      streamtype: 'shoutcast2',     
-      shoutcastpath: '/stream',     
-      shoutcastid: '1', 
-      autoplay: 'true',     
-      metadatainterval: '5000',     
-      volume: '100', 
-      usestreamcorsproxy: 'true' 
+<script src="https://sistemahost.com/playergenerator/js/jquery-3.2.1.min.js"></script>
+<script src="https://sistemahost.com/playergenerator/js/player.js"></script>
+<script> 
+    $('#stream').lunaradio({
+        streamurl: 'http://sonic.globalstream.pro:8108',
+        radioname: 'Stereo M',
+        coverimage: '',
+        onlycoverimage: false,
+        userinterface: 'big',
+        backgroundcolor: '#ffffff',
+        fontcolor: '#000000',
+        hightlightcolor: '#6c757d',
+        fontname: 'Raleway',
+        googlefont: 'Raleway:wght@100',
+        fontratio: '0.4',
+        scroll: 'true',
+        coverstyle: 'animated',
+        usevisualizer: 'real',
+        visualizertype: '1',
+        streamtype: 'shoutcast2',
+        shoutcastpath: '/stream',
+        shoutcastid: '1',
+        autoplay: 'false',
+        metadatainterval: '5000',
+        volume: '100',
+        usestreamcorsproxy: 'true'
     }); 
-  </script>
+</script>
+
 </body>
 </html>
