@@ -38,10 +38,7 @@
     header img.logo {
       width: 120px;
       display: block;
-      opacity: 0;
-      animation:
-        entrarLogo 1.6s ease-out forwards 0.3s,
-        reboteContinuo 2s ease-in-out infinite 2s;
+      animation: rebote 2s infinite ease-in-out;
     }
 
     .slogan {
@@ -52,7 +49,6 @@
       opacity: 0;
       animation: entrarSlogan 1.2s ease-out forwards;
       animation-delay: 1.7s;
-      animation-fill-mode: forwards;
     }
 
     .extra-img {
@@ -134,7 +130,6 @@
       border: 1px solid #ccc;
       font-size: 1em;
       box-sizing: border-box;
-      display: block;
     }
 
     .formulario input[type="submit"] {
@@ -173,7 +168,6 @@
       padding: 15px;
       border-radius: 20px;
       box-shadow: 0 0 20px #e60000a0;
-      transition: background 1s ease-in-out;
     }
 
     .right-buttons a {
@@ -240,50 +234,43 @@
       }
     }
 
-    @keyframes entrarLogo {
-      0% {
-        opacity: 0;
-        transform: translateX(-200px) scale(0.5) rotate(-20deg);
-        filter: brightness(0.5) blur(4px);
-      }
-      60% {
-        opacity: 1;
-        transform: translateX(20px) scale(1.1) rotate(5deg);
-        filter: brightness(1.2) blur(0);
-      }
-      100% {
-        opacity: 1;
-        transform: translateX(0) scale(1) rotate(0deg);
-        filter: brightness(1) blur(0);
-      }
-    }
-
     @keyframes entrarSlogan {
-      0% {
-        opacity: 0;
-        transform: translateY(30px) scale(0.9);
-      }
-      60% {
-        opacity: 1;
-        transform: translateY(-5px) scale(1.05);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
+      0% { opacity: 0; transform: translateY(30px) scale(0.9); }
+      60% { opacity: 1; transform: translateY(-5px) scale(1.05); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
     }
 
-    @keyframes reboteContinuo {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
+    @keyframes rebote {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes zoomIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      70% { transform: scale(1.05); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes zoomOut {
+      from { transform: scale(1); opacity: 1; }
+      to { transform: scale(0.7); opacity: 0; }
     }
   </style>
 </head>
 <body>
+  <!-- Banner Modal Publicitario -->
+  <div id="modalBanner" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.6); display: flex; justify-content: center; align-items: center; z-index: 9999; animation: fadeIn 0.6s ease-out;">
+    <div id="modalContent" style="position: relative; background: #fff; padding: 10px; border-radius: 15px; max-width: 420px; width: 90%; box-shadow: 0 0 20px #e60000; animation: zoomIn 0.7s ease-out;">
+      <button id="closeModal" style="position: absolute; top: 8px; right: 10px; background: #e60000; border: none; color: white; font-weight: bold; padding: 6px 12px; border-radius: 50%; cursor: pointer; font-size: 16px; box-shadow: 0 0 5px #000;">×</button>
+      <img src="http://imgfz.com/i/EH7tW0d.jpeg" alt="Publicidad Stereo M" style="width: 100%; border-radius: 10px;" />
+    </div>
+  </div>
+
   <header>
     <div class="logo-box">
       <img src="https://i.postimg.cc/L8bjb6K5/1687464033296.png" alt="Logo Stereo M" class="logo" />
@@ -376,6 +363,18 @@
         mensajeEstado.textContent = "❌ Hubo un problema. Intenta nuevamente.";
         console.error(error);
       });
+    });
+
+    const modal = document.getElementById('modalBanner');
+    const modalContent = document.getElementById('modalContent');
+    const closeBtn = document.getElementById('closeModal');
+
+    closeBtn.addEventListener('click', () => {
+      modalContent.style.animation = 'zoomOut 0.4s ease-in forwards';
+      modal.style.animation = 'fadeOut 0.4s ease-in forwards';
+      setTimeout(() => {
+        modal.style.display = 'none';
+      }, 400);
     });
   </script>
 </body>
