@@ -1,180 +1,381 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Corporación La Fuerte</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Radio Stereo M 101.5 FM</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
+    :root {
+      --rojo: #e60000;
+      --amarillo: #ffd700;
+      --negro: #111;
+      --blanco: #fff;
+      --celeste: #0088cc;
+      --fondo-footer: #222;
+    }
+
     body {
       margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(135deg, #1a1a2e, #16213e);
-      color: #fff;
-    }
-
-    .logo-animado {
-      width: 280px;
-      margin: 2rem auto 0;
-      display: block;
-      animation: entradaLogo 2.5s ease-out forwards, resplandor 3s infinite alternate;
-    }
-
-    @keyframes entradaLogo {
-      0% {
-        transform: scale(0.2);
-        opacity: 0;
-      }
-      70% {
-        transform: scale(1.15);
-        opacity: 1;
-      }
-      100% {
-        transform: scale(1);
-      }
-    }
-
-    @keyframes resplandor {
-      0% {
-        filter: drop-shadow(0 0 12px #ff6f61);
-      }
-      100% {
-        filter: drop-shadow(0 0 25px #ffcc00);
-      }
+      font-family: 'Raleway', sans-serif;
+      background: linear-gradient(to bottom, var(--celeste), #f44336);
+      color: var(--blanco);
     }
 
     header {
-      background: #0f3460;
+      display: flex;
+      align-items: center;
+      padding: 15px 20px;
+      background-color: var(--amarillo);
+      color: var(--negro);
+    }
+
+    .logo-box {
       text-align: center;
-      padding: 2rem 1rem 1rem;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+      margin-right: 20px;
     }
 
-    header h1 {
-      font-size: 3rem;
-      margin: 1rem 0 0;
-      color: #f9f871;
-      text-shadow: 2px 2px 8px #000;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      padding: 2rem;
-      max-width: 1300px;
-      margin: auto;
-    }
-
-    .card {
-      background: #222831;
-      border: 2px solid #ff6f61;
-      border-radius: 20px;
-      padding: 1.5rem;
-      text-align: center;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px) scale(1.03);
-      box-shadow: 0 10px 25px rgba(255, 111, 97, 0.5);
-    }
-
-    .logo {
+    header img.logo {
       width: 120px;
-      height: 120px;
-      object-fit: contain;
-      margin-bottom: 1rem;
-      border-radius: 12px;
-      background: #fff;
-      padding: 5px;
+      display: block;
+      animation: rebote 2s infinite ease-in-out;
     }
 
-    .card h2 {
-      color: #ffcc00;
-      margin-bottom: 1rem;
+    .slogan {
+      margin-top: 8px;
+      font-size: 1em;
+      color: var(--rojo);
+      font-weight: bold;
+      opacity: 0;
+      animation: entrarSlogan 1.2s ease-out forwards;
+      animation-delay: 1.7s;
+    }
+
+    .extra-img {
+      width: 300px;
+      max-width: 100%;
+      background: linear-gradient(135deg, #ff6600, #e60000);
+      padding: 8px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px #e60000a0;
+    }
+
+    .main-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .left-content {
+      max-width: 450px;
+      margin: 10px;
+      flex: 1 1 450px;
+    }
+
+    .player-box {
+      background: #fff;
+      color: var(--negro);
+      border: 3px solid var(--amarillo);
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 0 15px #ffd700;
+      text-align: center;
+    }
+
+    .player-box h2 {
+      color: var(--rojo);
+      margin-bottom: 10px;
     }
 
     audio {
       width: 100%;
       border-radius: 10px;
-      outline: none;
+    }
+
+    .formulario {
+      background-color: #fff;
+      color: #000;
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 15px;
+      border: 3px solid #ffd700;
+      box-shadow: 0 0 15px #ffd700;
+    }
+
+    .formulario h2 {
+      color: #e60000;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .centrado {
+      text-align: center;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    .formulario label {
+      font-weight: bold;
+      display: block;
+      margin: 10px 0 5px;
+    }
+
+    .formulario input,
+    .formulario textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+      box-sizing: border-box;
+    }
+
+    .formulario input[type="submit"] {
+      background-color: #e60000;
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1.1em;
+      border-radius: 30px;
+      transition: 0.3s;
+      width: auto;
+      padding: 12px 30px;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .formulario input[type="submit"]:hover {
+      background-color: #b30000;
+    }
+
+    .mensaje {
+      margin-top: 15px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .right-buttons {
+      margin: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 200px;
+      flex-shrink: 0;
+      background: linear-gradient(to bottom right, #ffe066, #ff7b7b);
+      padding: 15px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #e60000a0;
+    }
+
+    .right-buttons a {
+      display: block;
+      background: #fff;
+      color: var(--rojo);
+      text-align: center;
+      padding: 12px 15px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 30px;
+      box-shadow: 0 0 10px #000;
+      transition: 0.3s;
+    }
+
+    .right-buttons a:hover {
+      background: var(--amarillo);
+      color: var(--negro);
     }
 
     footer {
+      background-color: var(--fondo-footer);
+      padding: 15px;
+      font-size: 14px;
+      color: #ddd;
       text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      background: #0f0f0f;
-      color: #aaa;
+      margin-top: 40px;
+    }
+
+    @media screen and (max-width: 768px) {
+      header {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .logo-box {
+        margin-right: 10px;
+      }
+
+      .extra-img {
+        width: 200px;
+      }
+
+      .main-content {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .left-content {
+        max-width: 100%;
+        flex: none;
+      }
+
+      .right-buttons {
+        max-width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .right-buttons a {
+        flex: 1 1 45%;
+      }
+    }
+
+    @keyframes entrarSlogan {
+      0% { opacity: 0; transform: translateY(30px) scale(0.9); }
+      60% { opacity: 1; transform: translateY(-5px) scale(1.05); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes rebote {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes zoomIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      70% { transform: scale(1.05); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes zoomOut {
+      from { transform: scale(1); opacity: 1; }
+      to { transform: scale(0.7); opacity: 0; }
     }
   </style>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const audios = document.querySelectorAll('audio');
-      audios.forEach(audio => {
-        audio.addEventListener('play', () => {
-          audios.forEach(other => {
-            if (other !== audio) {
-              other.pause();
-            }
-          });
-        });
-      });
-    });
-  </script>
 </head>
 <body>
+  <!-- Banner Modal Publicitario -->
+  <div id="modalBanner" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.6); display: flex; justify-content: center; align-items: center; z-index: 9999; animation: fadeIn 0.6s ease-out;">
+    <div id="modalContent" style="position: relative; background: #fff; padding: 10px; border-radius: 15px; max-width: 420px; width: 90%; box-shadow: 0 0 20px #e60000; animation: zoomIn 0.7s ease-out;">
+      <button id="closeModal" style="position: absolute; top: 8px; right: 10px; background: #e60000; border: none; color: white; font-weight: bold; padding: 6px 12px; border-radius: 50%; cursor: pointer; font-size: 16px; box-shadow: 0 0 5px #000;">×</button>
+      <img src="http://imgfz.com/i/EH7tW0d.jpeg" alt="Publicidad Stereo M" style="width: 100%; border-radius: 10px;" />
+    </div>
+  </div>
+
   <header>
-    <img src="http://imgfz.com/i/bmnsNX4.png" alt="Logo Corporación La Fuerte" class="logo-animado">
-    <h1>Corporación La Fuerte</h1>
+    <div class="logo-box">
+      <img src="https://i.postimg.cc/L8bjb6K5/1687464033296.png" alt="Logo Stereo M" class="logo" />
+      <div class="slogan">La Radio Papá 🎙️</div>
+    </div>
+    <img src="http://imgfz.com/i/Y7pyVg3.jpeg" alt="Artistas Stereo M" class="extra-img" />
   </header>
-  <main class="grid">
-    <div class="card">
-      <img src="http://imgfz.com/i/FRicwT8.png" alt="La Jefa" class="logo">
-      <h2>La Jefa</h2>
-      <audio controls src="http://panelautodj.innovatestream.pe/7320/;">
-        Tu navegador no soporta audio HTML5.
-      </audio>
+
+  <div class="main-content">
+    <div class="left-content">
+      <div class="player-box">
+        <h2>🎧 Escúchanos en Vivo</h2>
+        <audio controls autoplay>
+          <source src="http://sonic.globalstream.pro/8108/stream" type="audio/mpeg">
+          Tu navegador no soporta audio HTML5.
+        </audio>
+        <div class="song-title" id="song-title">Cargando canción...</div>
+        <script>
+          async function fetchSongTitle() {
+            try {
+              const proxyUrl = "https://api.allorigins.win/get?url=";
+              const targetUrl = encodeURIComponent("http://sonic.globalstream.pro:8108/stats?sid=1&json=1&nocache=" + Date.now());
+              const response = await fetch(proxyUrl + targetUrl);
+              const data = await response.json();
+              const parsedData = JSON.parse(data.contents);
+              const title = parsedData.songtitle || "Sin título";
+              document.getElementById("song-title").textContent = title;
+            } catch (error) {
+              document.getElementById("song-title").textContent = "Error al cargar canción";
+            }
+          }
+          fetchSongTitle();
+          setInterval(fetchSongTitle, 5000);
+        </script>
+      </div>
+
+      <div class="formulario">
+        <h2>🎁 ¡Inscribe a Papá y Gana!</h2>
+        <p class="centrado">Radio Stereo M premia a papá en su día 🎉 <br> Sorteo: 15 de junio 2025</p>
+        <form id="formulario">
+          <input type="hidden" name="Fecha" id="fecha" />
+          <label for="papasNombre">Nombre del Papá:</label>
+          <input type="text" id="papasNombre" name="Nombre del Papá" required>
+          <label for="tuNombre">Tu Nombre:</label>
+          <input type="text" id="tuNombre" name="Tu Nombre" required>
+          <label for="dni">DNI del Papá:</label>
+          <input type="text" id="dni" name="DNI" required>
+          <label for="telefono">Celular de Contacto:</label>
+          <input type="text" id="telefono" name="Teléfono" required>
+          <label for="mensaje">Mensaje Especial para Papá:</label>
+          <textarea id="mensaje" name="Mensaje"></textarea>
+          <input type="submit" value="📨 Inscribir">
+        </form>
+        <div class="mensaje" id="mensajeEstado"></div>
+      </div>
     </div>
-    <div class="card">
-      <img src="http://imgfz.com/i/fmdxHD8.png" alt="La Fuerte" class="logo">
-      <h2>La Fuerte</h2>
-      <audio controls src="http://panelautodj.innovatestream.pe/7322/;">
-        Tu navegador no soporta audio HTML5.
-      </audio>
+
+    <div class="right-buttons">
+      <a href="https://play.google.com/store/apps/details?id=com.innovatel.radiostereom" target="_blank">📲 Descarga la App</a>
+      <a href="https://www.facebook.com/share/1Dib9eQUFD/" target="_blank">📘 Facebook</a>
+      <a href="https://wa.me/51984412853" target="_blank">🎤 WhatsApp Oyentes</a>
+      <a href="https://wa.me/51942883375" target="_blank">📢 Publicidad Aquí</a>
     </div>
-    <div class="card">
-      <img src="http://imgfz.com/i/bBApQu2.png" alt="San Francisco" class="logo">
-      <h2>San Francisco</h2>
-      <audio controls src="http://panelautodj.innovatestream.pe/7324/;">
-        Tu navegador no soporta audio HTML5.
-      </audio>
-    </div>
-    <div class="card">
-      <img src="http://imgfz.com/i/bVMWlXD.png" alt="Máxima" class="logo">
-      <h2>Máxima</h2>
-      <audio controls src="http://panelautodj.innovatestream.pe/8342/;">
-        Tu navegador no soporta audio HTML5.
-      </audio>
-    </div>
-    <div class="card">
-      <img src="http://imgfz.com/i/J89AMPT.png" alt="La Cumbiambera" class="logo">
-      <h2>La Cumbiambera</h2>
-      <audio controls src="http://panelautodj.innovatestream.pe/8464/;">
-        Tu navegador no soporta audio HTML5.
-      </audio>
-    </div>
-    <div class="card">
-      <img src="https://imgfz.com/i/zauB0Id.png" alt="La Raya" class="logo">
-      <h2>La Raya</h2>
-      <audio controls src="http://panelautodj.innovatestream.pe/8466/;">
-        Tu navegador no soporta audio HTML5.
-      </audio>
-    </div>
-  </main>
+  </div>
+
   <footer>
-    &copy; 2025 Corporación La Fuerte. Todos los derechos reservados.
+    Diseño y desarrollo web por Marcony Clavijo | Innovación que conecta.
   </footer>
+
+  <script>
+    document.getElementById("formulario").addEventListener("submit", function(e) {
+      e.preventDefault();
+      document.getElementById("fecha").value = new Date().toLocaleString("es-PE");
+      const form = e.target;
+      const data = new FormData(form);
+      const mensajeEstado = document.getElementById("mensajeEstado");
+
+      fetch("https://script.google.com/macros/s/AKfycbwkEB5b-ewSQ9EcbST5-Dyr1CTC-35a2tvH2fzcN88YvDaHJ2q3Z_HT2Czf4g_9yBJy/exec", {
+        method: "POST",
+        body: data
+      })
+      .then(res => res.ok ? res.text() : Promise.reject("Error al enviar"))
+      .then(response => {
+        mensajeEstado.style.color = "green";
+        mensajeEstado.textContent = "✅ ¡Papá fue inscrito con éxito!";
+        form.reset();
+      })
+      .catch(error => {
+        mensajeEstado.style.color = "red";
+        mensajeEstado.textContent = "❌ Hubo un problema. Intenta nuevamente.";
+        console.error(error);
+      });
+    });
+
+    const modal = document.getElementById('modalBanner');
+    const modalContent = document.getElementById('modalContent');
+    const closeBtn = document.getElementById('closeModal');
+
+    closeBtn.addEventListener('click', () => {
+      modalContent.style.animation = 'zoomOut 0.4s ease-in forwards';
+      modal.style.animation = 'fadeOut 0.4s ease-in forwards';
+      setTimeout(() => {
+        modal.style.display = 'none';
+      }, 400);
+    });
+  </script>
 </body>
 </html>
