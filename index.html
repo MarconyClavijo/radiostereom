@@ -93,70 +93,6 @@
       border-radius: 10px;
     }
 
-    .formulario {
-      background-color: #fff;
-      color: #000;
-      margin-top: 20px;
-      padding: 20px;
-      border-radius: 15px;
-      border: 3px solid #ffd700;
-      box-shadow: 0 0 15px #ffd700;
-    }
-
-    .formulario h2 {
-      color: #e60000;
-      text-align: center;
-      margin-bottom: 15px;
-    }
-
-    .centrado {
-      text-align: center;
-      margin-bottom: 15px;
-      font-weight: bold;
-    }
-
-    .formulario label {
-      font-weight: bold;
-      display: block;
-      margin: 10px 0 5px;
-    }
-
-    .formulario input,
-    .formulario textarea {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 1em;
-      box-sizing: border-box;
-    }
-
-    .formulario input[type="submit"] {
-      background-color: #e60000;
-      color: white;
-      border: none;
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 1.1em;
-      border-radius: 30px;
-      transition: 0.3s;
-      width: auto;
-      padding: 12px 30px;
-      margin: 0 auto;
-      display: block;
-    }
-
-    .formulario input[type="submit"]:hover {
-      background-color: #b30000;
-    }
-
-    .mensaje {
-      margin-top: 15px;
-      font-weight: bold;
-      text-align: center;
-    }
-
     .right-buttons {
       margin: 10px;
       display: flex;
@@ -263,20 +199,14 @@
   </style>
 </head>
 <body>
-  <!-- Banner Modal Publicitario -->
-  <div id="modalBanner" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.6); display: flex; justify-content: center; align-items: center; z-index: 9999; animation: fadeIn 0.6s ease-out;">
-    <div id="modalContent" style="position: relative; background: #fff; padding: 10px; border-radius: 15px; max-width: 420px; width: 90%; box-shadow: 0 0 20px #e60000; animation: zoomIn 0.7s ease-out;">
-      <button id="closeModal" style="position: absolute; top: 8px; right: 10px; background: #e60000; border: none; color: white; font-weight: bold; padding: 6px 12px; border-radius: 50%; cursor: pointer; font-size: 16px; box-shadow: 0 0 5px #000;">×</button>
-      <img src="https://imgfz.com/i/EH7tW0d.jpeg" alt="Publicidad Stereo M" style="width: 100%; border-radius: 10px;" />
-    </div>
-  </div>
-
   <header>
     <div class="logo-box">
-      <img src="https://i.postimg.cc/L8bjb6K5/1687464033296.png" alt="Logo Stereo M" class="logo" />
+      <a href="https://radiostereom.com/" target="_blank">
+        <img src="https://i.postimg.cc/L8bjb6K5/1687464033296.png" alt="Logo Stereo M" class="logo" />
+      </a>
       <div class="slogan">La Radio Papá 🎙️</div>
     </div>
-    <img src="https://imgfz.com/i/Y7pyVg3.jpeg" alt="Artistas Stereo M" class="extra-img" />
+    <img src="http://imgfz.com/i/xgID1Gn.jpeg" alt="Artistas Stereo M" class="extra-img" />
   </header>
 
   <div class="main-content">
@@ -306,26 +236,6 @@
           setInterval(fetchSongTitle, 5000);
         </script>
       </div>
-
-      <div class="formulario">
-        <h2>🎁 ¡Inscribe a Papá y Gana!</h2>
-        <p class="centrado">Radio Stereo M premia a papá en su día 🎉 <br> Sorteo: 15 de junio 2025</p>
-        <form id="formulario">
-          <input type="hidden" name="Fecha" id="fecha" />
-          <label for="papasNombre">Nombre del Papá:</label>
-          <input type="text" id="papasNombre" name="Nombre del Papá" required>
-          <label for="tuNombre">Tu Nombre:</label>
-          <input type="text" id="tuNombre" name="Tu Nombre" required>
-          <label for="dni">DNI del Papá:</label>
-          <input type="text" id="dni" name="DNI" required>
-          <label for="telefono">Celular de Contacto:</label>
-          <input type="text" id="telefono" name="Teléfono" required>
-          <label for="mensaje">Mensaje Especial para Papá:</label>
-          <textarea id="mensaje" name="Mensaje"></textarea>
-          <input type="submit" value="📨 Inscribir">
-        </form>
-        <div class="mensaje" id="mensajeEstado"></div>
-      </div>
     </div>
 
     <div class="right-buttons">
@@ -339,43 +249,5 @@
   <footer>
     Diseño y desarrollo web por Marcony Clavijo | Innovación que conecta.
   </footer>
-
-  <script>
-    document.getElementById("formulario").addEventListener("submit", function(e) {
-      e.preventDefault();
-      document.getElementById("fecha").value = new Date().toLocaleString("es-PE");
-      const form = e.target;
-      const data = new FormData(form);
-      const mensajeEstado = document.getElementById("mensajeEstado");
-
-      fetch("https://script.google.com/macros/s/AKfycbwkEB5b-ewSQ9EcbST5-Dyr1CTC-35a2tvH2fzcN88YvDaHJ2q3Z_HT2Czf4g_9yBJy/exec", {
-        method: "POST",
-        body: data
-      })
-      .then(res => res.ok ? res.text() : Promise.reject("Error al enviar"))
-      .then(response => {
-        mensajeEstado.style.color = "green";
-        mensajeEstado.textContent = "✅ ¡Papá fue inscrito con éxito!";
-        form.reset();
-      })
-      .catch(error => {
-        mensajeEstado.style.color = "red";
-        mensajeEstado.textContent = "❌ Hubo un problema. Intenta nuevamente.";
-        console.error(error);
-      });
-    });
-
-    const modal = document.getElementById('modalBanner');
-    const modalContent = document.getElementById('modalContent');
-    const closeBtn = document.getElementById('closeModal');
-
-    closeBtn.addEventListener('click', () => {
-      modalContent.style.animation = 'zoomOut 0.4s ease-in forwards';
-      modal.style.animation = 'fadeOut 0.4s ease-in forwards';
-      setTimeout(() => {
-        modal.style.display = 'none';
-      }, 400);
-    });
-  </script>
 </body>
 </html>
