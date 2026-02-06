@@ -4,250 +4,218 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Radio Stereo M 101.5 FM</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet"/>
+
   <style>
     :root {
-      --rojo: #e60000;
-      --amarillo: #ffd700;
-      --negro: #111;
-      --blanco: #fff;
-      --celeste: #0088cc;
-      --fondo-footer: #222;
+      --rojo:#e60000;
+      --amarillo:#ffd700;
+      --negro:#111;
+      --blanco:#fff;
+      --celeste:#0088cc;
+      --footer:#222;
     }
 
-    body {
-      margin: 0;
-      font-family: 'Raleway', sans-serif;
-      background: linear-gradient(to bottom, var(--celeste), #f44336);
-      color: var(--blanco);
+    body{
+      margin:0;
+      font-family:'Raleway',sans-serif;
+      background:linear-gradient(to bottom,var(--celeste),#f44336);
+      color:var(--blanco);
     }
 
-    header {
-      display: flex;
-      align-items: center;
-      padding: 15px 20px;
-      background-color: var(--amarillo);
-      color: var(--negro);
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:15px 20px;
+      background:var(--amarillo);
+      color:var(--negro);
+      flex-wrap:wrap;
     }
 
-    .logo-box {
-      text-align: center;
-      margin-right: 20px;
+    .logo-box{text-align:center}
+
+    .logo{
+      width:120px;
+      animation:rebote 2s infinite;
     }
 
-    header img.logo {
-      width: 120px;
-      display: block;
-      animation: rebote 2s infinite ease-in-out;
+    .slogan{
+      font-weight:bold;
+      color:var(--rojo);
+      margin-top:6px;
+      animation:entrar 1.2s forwards;
     }
 
-    .slogan {
-      margin-top: 8px;
-      font-size: 1em;
-      color: var(--rojo);
-      font-weight: bold;
-      opacity: 0;
-      animation: entrarSlogan 1.2s ease-out forwards;
-      animation-delay: 1.7s;
+    .extra-img{
+      width:280px;
+      border-radius:15px;
+      box-shadow:0 0 15px #e60000aa;
     }
 
-    .extra-img {
-      width: 300px;
-      max-width: 100%;
-      background: linear-gradient(135deg, #ff6600, #e60000);
-      padding: 8px;
-      border-radius: 15px;
-      box-shadow: 0 0 15px #e60000a0;
+    .main{
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      padding:25px;
+      flex-wrap:wrap;
     }
 
-    .main-content {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 20px;
+    .player-box{
+      background:#fff;
+      color:#000;
+      border-radius:15px;
+      padding:20px;
+      max-width:420px;
+      width:100%;
+      text-align:center;
+      box-shadow:0 0 15px #ffd700;
     }
 
-    .left-content {
-      max-width: 450px;
-      margin: 10px;
-      flex: 1 1 450px;
+    audio{
+      width:100%;
+      margin-top:10px;
     }
 
-    .player-box {
-      background: #fff;
-      color: var(--negro);
-      border: 3px solid var(--amarillo);
-      border-radius: 15px;
-      padding: 20px;
-      box-shadow: 0 0 15px #ffd700;
-      text-align: center;
+    .live{
+      margin-top:10px;
+      color:red;
+      font-weight:bold;
+      animation:blink 1s infinite;
     }
 
-    .player-box h2 {
-      color: var(--rojo);
-      margin-bottom: 10px;
+    .buttons{
+      background:linear-gradient(to bottom right,#ffe066,#ff7b7b);
+      padding:15px;
+      border-radius:20px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      max-width:220px;
     }
 
-    audio {
-      width: 100%;
-      border-radius: 10px;
+    .buttons a{
+      background:#fff;
+      color:var(--rojo);
+      padding:12px;
+      text-decoration:none;
+      border-radius:30px;
+      font-weight:bold;
+      text-align:center;
     }
 
-    .right-buttons {
-      margin: 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      max-width: 200px;
-      flex-shrink: 0;
-      background: linear-gradient(to bottom right, #ffe066, #ff7b7b);
-      padding: 15px;
-      border-radius: 20px;
-      box-shadow: 0 0 20px #e60000a0;
+    footer{
+      background:var(--footer);
+      text-align:center;
+      padding:15px;
+      font-size:14px;
+      margin-top:30px;
+      color:#ddd;
     }
 
-    .right-buttons a {
-      display: block;
-      background: #fff;
-      color: var(--rojo);
-      text-align: center;
-      padding: 12px 15px;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 30px;
-      box-shadow: 0 0 10px #000;
-      transition: 0.3s;
+    @keyframes rebote{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-10px)}
+    }
+    @keyframes blink{
+      50%{opacity:0}
+    }
+    @keyframes entrar{
+      from{opacity:0;transform:translateY(20px)}
+      to{opacity:1;transform:translateY(0)}
     }
 
-    .right-buttons a:hover {
-      background: var(--amarillo);
-      color: var(--negro);
-    }
-
-    footer {
-      background-color: var(--fondo-footer);
-      padding: 15px;
-      font-size: 14px;
-      color: #ddd;
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    @media screen and (max-width: 768px) {
-      header {
-        flex-direction: row;
-        justify-content: space-between;
-      }
-
-      .logo-box {
-        margin-right: 10px;
-      }
-
-      .extra-img {
-        width: 200px;
-      }
-
-      .main-content {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .left-content {
-        max-width: 100%;
-        flex: none;
-      }
-
-      .right-buttons {
-        max-width: 100%;
-        flex-direction: row;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 10px;
-      }
-
-      .right-buttons a {
-        flex: 1 1 45%;
-      }
-    }
-
-    @keyframes entrarSlogan {
-      0% { opacity: 0; transform: translateY(30px) scale(0.9); }
-      60% { opacity: 1; transform: translateY(-5px) scale(1.05); }
-      100% { opacity: 1; transform: translateY(0) scale(1); }
-    }
-
-    @keyframes rebote {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes zoomIn {
-      0% { transform: scale(0.5); opacity: 0; }
-      70% { transform: scale(1.05); opacity: 1; }
-      100% { transform: scale(1); }
-    }
-
-    @keyframes zoomOut {
-      from { transform: scale(1); opacity: 1; }
-      to { transform: scale(0.7); opacity: 0; }
+    @media(max-width:768px){
+      .extra-img{width:220px}
+      .buttons{flex-direction:row;flex-wrap:wrap}
+      .buttons a{flex:1 1 45%}
     }
   </style>
 </head>
+
 <body>
-  <header>
-    <div class="logo-box">
-      <a href="https://radiostereom.com/" target="_blank">
-        <img src="https://i.postimg.cc/L8bjb6K5/1687464033296.png" alt="Logo Stereo M" class="logo" />
-      </a>
-      <div class="slogan">La Radio Papá 🎙️</div>
-    </div>
-    <img src="http://imgfz.com/i/xgID1Gn.jpeg" alt="Artistas Stereo M" class="extra-img" />
-  </header>
 
-  <div class="main-content">
-    <div class="left-content">
-      <div class="player-box">
-        <h2>🎧 Escúchanos en Vivo</h2>
-        <audio controls autoplay>
-          <source src="https://sonic.globalstream.pro/8108/stream" type="audio/mpeg">
-          Tu navegador no soporta audio HTML5.
-        </audio>
-        <div class="song-title" id="song-title">Cargando canción...</div>
-        <script>
-          async function fetchSongTitle() {
-            try {
-              const proxyUrl = "https://api.allorigins.win/get?url=";
-              const targetUrl = encodeURIComponent("http://sonic.globalstream.pro:8108/stats?sid=1&json=1&nocache=" + Date.now());
-              const response = await fetch(proxyUrl + targetUrl);
-              const data = await response.json();
-              const parsedData = JSON.parse(data.contents);
-              const title = parsedData.songtitle || "Sin título";
-              document.getElementById("song-title").textContent = title;
-            } catch (error) {
-              document.getElementById("song-title").textContent = "Error al cargar canción";
-            }
-          }
-          fetchSongTitle();
-          setInterval(fetchSongTitle, 5000);
-        </script>
-      </div>
-    </div>
+<header>
+  <div class="logo-box">
+    <img src="https://i.postimg.cc/L8bjb6K5/1687464033296.png" class="logo" alt="Stereo M">
+    <div class="slogan">La Radio Papá 🎙️</div>
+  </div>
+  <img src="http://imgfz.com/i/xgID1Gn.jpeg" class="extra-img" alt="Stereo M">
+</header>
 
-    <div class="right-buttons">
-      <a href="https://play.google.com/store/apps/details?id=com.innovatel.radiostereom" target="_blank">📲 Descarga la App</a>
-      <a href="https://www.facebook.com/share/1Dib9eQUFD/" target="_blank">📘 Facebook</a>
-      <a href="https://wa.me/51984412853" target="_blank">🎤 WhatsApp Oyentes</a>
-      <a href="https://wa.me/51942883375" target="_blank">📢 Publicidad Aquí</a>
-    </div>
+<div class="main">
+
+  <div class="player-box">
+    <h2>🎧 Escúchanos en Vivo</h2>
+
+    <!-- AUDIO -->
+    <audio id="radioPlayer" controls preload="none"></audio>
+
+    <div class="live">🔴 EN VIVO</div>
+    <div id="song-title">Cargando canción...</div>
   </div>
 
-  <footer>
-    Diseño y desarrollo web por Marcony Clavijo | Innovación que conecta.
-  </footer>
+  <div class="buttons">
+    <a href="https://play.google.com/store/apps/details?id=com.innovatel.radiostereom" target="_blank">📲 Descarga la App</a>
+    <a href="https://www.facebook.com/share/1Dib9eQUFD/" target="_blank">📘 Facebook</a>
+    <a href="https://wa.me/51984412853" target="_blank">🎤 WhatsApp Oyentes</a>
+    <a href="https://wa.me/51942883375" target="_blank">📢 Publicidad</a>
+  </div>
+
+</div>
+
+<footer>
+  Diseño y desarrollo web por Marcony Clavijo | 942883375.
+</footer>
+
+<script>
+  const player = document.getElementById("radioPlayer");
+  const STREAM = "https://sonic.globalstream.pro/8108/stream";
+  let pausedByUser = false;
+
+  function connectLive() {
+    player.src = STREAM + "?live=" + Date.now();
+    player.load();
+  }
+
+  // conectar al cargar la página
+  connectLive();
+
+  // marcar pausa
+  player.addEventListener("pause", () => {
+    pausedByUser = true;
+  });
+
+  // al volver a play, reconectar al vivo
+  player.addEventListener("play", () => {
+    if (pausedByUser) {
+      pausedByUser = false;
+      connectLive();
+      setTimeout(() => player.play(), 200);
+    }
+  });
+
+  // ====== TÍTULO DE CANCIÓN ======
+  async function fetchSongTitle(){
+    try{
+      const proxy="https://api.allorigins.win/get?url=";
+      const url=encodeURIComponent(
+        "http://sonic.globalstream.pro:8108/stats?sid=1&json=1&nocache="+Date.now()
+      );
+      const res=await fetch(proxy+url);
+      const data=await res.json();
+      const parsed=JSON.parse(data.contents);
+      document.getElementById("song-title").textContent =
+        parsed.songtitle || "En transmisión...";
+    }catch{
+      document.getElementById("song-title").textContent="En transmisión...";
+    }
+  }
+
+  fetchSongTitle();
+  setInterval(fetchSongTitle,5000);
+</script>
+
 </body>
 </html>
