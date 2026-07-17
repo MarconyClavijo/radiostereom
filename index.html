@@ -2,241 +2,59 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Radio Stereo M 101.5 FM</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet"/>
-
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
 <style>
-:root{
---rojo:#e60000;
---amarillo:#ffd700;
---negro:#111;
---blanco:#fff;
---celeste:#0088cc;
---footer:#222;
-}
-
-body{
-margin:0;
-font-family:'Raleway',sans-serif;
-background:linear-gradient(to bottom,var(--celeste),#f44336);
-color:var(--blanco);
-}
-
-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 20px;
-background:var(--amarillo);
-color:var(--negro);
-flex-wrap:wrap;
-}
-
-.logo-box{text-align:center}
-
-.logo{
-width:120px;
-animation:rebote 2s infinite;
-}
-
-.slogan{
-font-weight:bold;
-color:var(--rojo);
-margin-top:6px;
-animation:entrar 1.2s forwards;
-}
-
-.extra-img{
-width:280px;
-border-radius:15px;
-box-shadow:0 0 15px #e60000aa;
-}
-
-.main{
-display:flex;
-justify-content:center;
-gap:20px;
-padding:25px;
-flex-wrap:wrap;
-}
-
-.player-box{
-background:#fff;
-color:#000;
-border-radius:15px;
-padding:20px;
-max-width:420px;
-width:100%;
-text-align:center;
-box-shadow:0 0 15px #ffd700;
-}
-
-audio{
-width:100%;
-margin-top:10px;
-}
-
-.live{
-margin-top:10px;
-color:red;
-font-weight:bold;
-animation:blink 1s infinite;
-}
-
-#song-title{
-margin-top:10px;
-font-weight:bold;
-font-size:16px;
-}
-
-.buttons{
-background:linear-gradient(to bottom right,#ffe066,#ff7b7b);
-padding:15px;
-border-radius:20px;
-display:flex;
-flex-direction:column;
-gap:12px;
-max-width:220px;
-}
-
-.buttons a{
-background:#fff;
-color:var(--rojo);
-padding:12px;
-text-decoration:none;
-border-radius:30px;
-font-weight:bold;
-text-align:center;
-}
-
-footer{
-background:var(--footer);
-text-align:center;
-padding:15px;
-font-size:14px;
-margin-top:30px;
-color:#ddd;
-}
-
-@keyframes rebote{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(-10px)}
-}
-
-@keyframes blink{
-50%{opacity:0}
-}
-
-@keyframes entrar{
-from{opacity:0;transform:translateY(20px)}
-to{opacity:1;transform:translateY(0)}
-}
-
-@media(max-width:768px){
-.extra-img{width:220px}
-.buttons{flex-direction:row;flex-wrap:wrap}
-.buttons a{flex:1 1 45%}
-}
+:root{--azul:#0b3d91;--amarillo:#ffd700;--rojo:#e60000;--blanco:#fff;--gris:#f5f5f5;}
+*{box-sizing:border-box}
+body{margin:0;font-family:Raleway,sans-serif;background:#eef4ff;color:#222}
+header{background:var(--azul);padding:18px;text-align:center}
+.logo{width:120px;animation:flotar 2.5s infinite}
+.slogan{color:#ffd700;font-weight:bold;margin-top:8px}
+.banner img{display:block;width:100%;max-height:420px;object-fit:cover}
+.main{max-width:1100px;margin:auto;padding:25px;display:grid;grid-template-columns:2fr 1fr;gap:20px}
+.card{background:#fff;border-radius:18px;padding:20px;box-shadow:0 5px 15px rgba(0,0,0,.15)}
+audio{width:100%}
+.live{color:#e60000;font-weight:bold;margin:10px 0}
+#song-title{font-weight:bold;color:#0b3d91}
+.buttons a{display:block;text-decoration:none;background:var(--amarillo);color:#111;padding:12px;border-radius:30px;text-align:center;margin-bottom:10px;font-weight:bold}
+.events{max-width:1100px;margin:20px auto;padding:0 20px}
+.events h2{text-align:center;color:#0b3d91}
+.slider{position:relative;max-width:420px;margin:0 auto}
+.slide{display:none}
+.slide.active{display:block}
+.slide img{width:100%;border-radius:15px;box-shadow:0 3px 10px rgba(0,0,0,.15)}
+footer{background:#0b3d91;color:#fff;text-align:center;padding:18px;margin-top:30px}
+@keyframes flotar{50%{transform:translateY(-8px)}}
+@media(max-width:768px){.main{grid-template-columns:1fr}.slider{max-width:320px}}
 </style>
-</head>
-
-<body>
-
-<header>
-<div class="logo-box">
-<img src="https://i.postimg.cc/L8bjb6K5/1687464033296.png" class="logo">
-<div class="slogan">La Radio Papá 🎙️</div>
-</div>
-
-<img src="http://imgfz.com/i/xgID1Gn.jpeg" class="extra-img">
-</header>
-
+</head><body>
+<header><img class="logo" src="https://i.postimg.cc/L8bjb6K5/1687464033296.png"><div class="slogan">La Radio Papá 🎙️</div></header>
+<div class="banner"><img src="http://imgfz.com/i/fCXV3aO.jpeg"></div>
 <div class="main">
-
-<div class="player-box">
-
-<h2>🎧 Escúchanos en Vivo</h2>
-
-<audio id="radioPlayer" controls preload="none"></audio>
-
-<div class="live">🔴 EN VIVO</div>
-
-<div id="song-title">
-<span id="sonic_title">Cargando canción...</span>
-</div>
-
-</div>
-
-<div class="buttons">
-<a href="https://play.google.com/store/apps/details?id=com.innovatel.radiostereom" target="_blank">📲 Descarga la App</a>
+<div class="card"><h2>🎧 Escúchanos en Vivo</h2><audio id="radioPlayer" controls preload="none"></audio><div class="live">🔴 EN VIVO</div><div id="song-title"><span id="sonic_title">Cargando canción...</span></div></div>
+<div class="card buttons">
+<a href="https://play.google.com/store/apps/details?id=com.innovatel.radiostereom" target="_blank">📲 Descargar App</a>
 <a href="https://www.facebook.com/share/1Dib9eQUFD/" target="_blank">📘 Facebook</a>
 <a href="https://wa.me/51984412853" target="_blank">🎤 WhatsApp Oyentes</a>
 <a href="https://wa.me/51942883375" target="_blank">📢 Publicidad</a>
+</div></div>
+<section class="events">
+<h2>🎉 Entérate de los eventos</h2>
+<div class="slider">
+<div class="slide active"><img src="http://imgfz.com/i/hV6uWgY.jpeg"></div>
+<div class="slide"><img src="http://imgfz.com/i/ITN6eUD.jpeg"></div>
+<div class="slide"><img src="http://imgfz.com/i/tcTFve7.jpeg"></div>
 </div>
-
-</div>
-
-<footer>
-Diseño y desarrollo web por Marcony Clavijo | 942883375.
-</footer>
-
+</section>
+<footer>Diseño y desarrollo web por Marcony Clavijo | 942883375</footer>
 <script>
-
-const player = document.getElementById("radioPlayer");
-const STREAM = "https://sonic.globalstream.pro/8108/stream";
-
-let pausedByUser=false;
-
-function connectLive(){
-player.src=STREAM+"?live="+Date.now();
-player.load();
-}
-
-connectLive();
-
-player.addEventListener("pause",()=>{
-pausedByUser=true;
-});
-
-player.addEventListener("play",()=>{
-if(pausedByUser){
-pausedByUser=false;
-connectLive();
-setTimeout(()=>player.play(),200);
-}
-});
-
+const player=document.getElementById("radioPlayer");
+player.src="https://sonic.globalstream.pro/8108/stream?t="+Date.now();
+setInterval(()=>{if(typeof sonic_data!=="undefined"&&sonic_data.songtitle){document.getElementById("sonic_title").textContent=sonic_data.songtitle;}},2000);
+let i=0;const slides=document.querySelectorAll(".slide");
+setInterval(()=>{slides[i].classList.remove("active");i=(i+1)%slides.length;slides[i].classList.add("active");},5000);
 </script>
-
-<!-- WIDGET SONIC -->
-
 <script id="sonic_js" data-port="8108" src="https://sonic.globalstream.pro/cp/widgets.js?r=906"></script>
-
-<script>
-
-function updateSong(){
-
-if(typeof sonic_data!=="undefined"){
-
-if(sonic_data.songtitle){
-
-document.getElementById("sonic_title").innerText=sonic_data.songtitle;
-
-}else{
-
-document.getElementById("sonic_title").innerText="En transmisión...";
-
-}
-
-}
-
-}
-
-setInterval(updateSong,2000);
-
-</script>
-
-</body>
-</html>
+</body></html>
