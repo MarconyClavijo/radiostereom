@@ -9,15 +9,35 @@
 :root{--azul:#0b3d91;--amarillo:#ffd700;--rojo:#e60000;--blanco:#fff;--gris:#f5f5f5;}
 *{box-sizing:border-box}
 body{margin:0;font-family:Raleway,sans-serif;background:#eef4ff;color:#222}
-header{background:var(--azul);padding:18px;text-align:center}
-.logo{width:120px;animation:flotar 2.5s infinite}
+
+/* --- HEADER OPTIMIZADO: LOGO FIJO Y ESPACIO COMPACTO --- */
+header{background:var(--azul);padding:10px 12px;position:relative}
+.navbar{max-width:1100px;margin:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;min-height:55px}
+.brand{display:flex;flex-direction:column;align-items:center;text-align:center;width:100%}
+.logo{width:80px;height:auto;margin-bottom:3px;display:block} /* Se eliminó la animación flotante */
+
+.menu-toggle{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:1px solid rgba(255,255,255,0.4);color:white;font-size:18px;padding:6px 12px;border-radius:6px;cursor:pointer;}
+.menu-toggle:hover{border-color:var(--amarillo);color:var(--amarillo)}
+.nav-links{display:none;width:100%;text-align:center;position:absolute;top:100%;left:0;background:var(--azul);z-index:999;border-top:1px solid rgba(255,255,255,0.1);padding-bottom:10px}
+.nav-links.active{display:block}
+.nav-links a{display:block;color:white;text-decoration:none;margin:12px 0;font-weight:bold;font-size:16px;}
+.nav-links a:hover{color:var(--amarillo)}
+
+@media(min-width:769px){
+  .navbar{flex-direction:row;justify-content:space-between}
+  .brand{width:auto;align-items:flex-start;text-align:left}
+  .menu-toggle{display:none}
+  .nav-links{display:flex;position:static;width:auto;background:none;border:none;padding:0}
+  .nav-links a{margin:0 15px}
+}
+
 .slogan{color:#ffd700;font-weight:bold;margin-top:8px}
 .banner img{display:block;width:100%;max-height:420px;object-fit:cover}
 .main{max-width:1100px;margin:auto;padding:25px;display:grid;grid-template-columns:2fr 1fr;gap:20px}
 .card{background:#fff;border-radius:18px;padding:20px;box-shadow:0 5px 15px rgba(0,0,0,.15)}
 audio{width:100%}
 .live{color:#e60000;font-weight:bold;margin:10px 0}
-#song-title{font-weight:bold;color:#0b3d91}
+#song-title{font-weight:bold;color:#0b3d91;margin-bottom:15px}
 .buttons a{display:block;text-decoration:none;background:var(--amarillo);color:#111;padding:12px;border-radius:30px;text-align:center;margin-bottom:10px;font-weight:bold}
 .events{max-width:1100px;margin:20px auto;padding:0 20px}
 .events h2{text-align:center;color:#0b3d91}
@@ -26,20 +46,52 @@ audio{width:100%}
 .slide.active{display:block}
 .slide img{width:100%;border-radius:15px;box-shadow:0 3px 10px rgba(0,0,0,.15)}
 footer{background:#0b3d91;color:#fff;text-align:center;padding:18px;margin-top:30px}
-@keyframes flotar{50%{transform:translateY(-8px)}}
 @media(max-width:768px){.main{grid-template-columns:1fr}.slider{max-width:320px}}
 </style>
 </head><body>
-<header><img class="logo" src="https://i.postimg.cc/L8bjb6K5/1687464033296.png"><div class="slogan">La Radio Papá 🎙️</div></header>
+<header>
+  <div class="navbar">
+    <div class="brand">
+      <img class="logo" src="https://i.postimg.cc/L8bjb6K5/1687464033296.png">
+      <div style="color:#fff;font-size:13px;font-weight:bold;letter-spacing:0.5px;">Sullana - Piura</div>
+    </div>
+    
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    
+    <nav class="nav-links" id="menuLinks">
+      <a style="color:white;margin:10px">Inicio</a>
+      <a style="color:white;margin:10px">En Vivo</a>
+      <a style="color:white;margin:10px">Eventos</a>
+      <a style="color:white;margin:10px">Programación</a>
+    </nav>
+  </div>
+</header>
+
 <div class="banner"><img src="http://imgfz.com/i/fCXV3aO.jpeg"></div>
 <div class="main">
-<div class="card"><h2>🎧 Escúchanos en Vivo</h2><audio id="radioPlayer" controls preload="none"></audio><div class="live">🔴 EN VIVO</div><div id="song-title"><span id="sonic_title">Cargando canción...</span></div></div>
+
+<!-- REPRODUCTOR CON LA SECCIÓN AL AIRE INCORPORADA -->
+<div class="card">
+    <h2>🎧 Escúchanos en Vivo</h2>
+    <audio id="radioPlayer" controls preload="none"></audio>
+    <div class="live">🔴 EN VIVO</div>
+    <div id="song-title"><span id="sonic_title">Cargando canción...</span></div>
+    
+    <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
+    <h3 style="margin-top:0;">🟢 AL AIRE AHORA</h3>
+    <div id="locutor" style="margin-bottom: 5px;"></div>
+    <div id="horario"></div>
+</div>
+
+<!-- BOTONES DE REDES Y APP -->
 <div class="card buttons">
-<a href="https://play.google.com/store/apps/details?id=com.innovatel.radiostereom" target="_blank">📲 Descargar App</a>
-<a href="https://www.facebook.com/share/1Dib9eQUFD/" target="_blank">📘 Facebook</a>
-<a href="https://wa.me/51984412853" target="_blank">🎤 WhatsApp Oyentes</a>
-<a href="https://wa.me/51942883375" target="_blank">📢 Publicidad</a>
-</div></div>
+    <a href="https://play.google.com/store/apps/details?id=com.innovatel.radiostereom" target="_blank">📲 Descargar App</a>
+    <a href="https://www.facebook.com/share/1Dib9eQUFD/" target="_blank">📘 Facebook</a>
+    <a href="https://wa.me/51984412853" target="_blank">🎤 WhatsApp Oyentes</a>
+    <a href="https://wa.me/51942883375" target="_blank">📢 Publicidad</a>
+</div>
+
+</div>
 <section class="events">
 <h2>🎉 Entérate de los eventos</h2>
 <div class="slider">
@@ -49,12 +101,114 @@ footer{background:#0b3d91;color:#fff;text-align:center;padding:18px;margin-top:3
 </div>
 </section>
 <footer>Diseño y desarrollo web por Marcony Clavijo | 942883375</footer>
+
 <script>
+function toggleMenu() {
+    var links = document.getElementById("menuLinks");
+    links.classList.toggle("active");
+}
+
 const player=document.getElementById("radioPlayer");
 player.src="https://sonic.globalstream.pro/8108/stream?t="+Date.now();
 setInterval(()=>{if(typeof sonic_data!=="undefined"&&sonic_data.songtitle){document.getElementById("sonic_title").textContent=sonic_data.songtitle;}},2000);
 let i=0;const slides=document.querySelectorAll(".slide");
 setInterval(()=>{slides[i].classList.remove("active");i=(i+1)%slides.length;slides[i].classList.add("active");},5000);
+
+function ap(){
+    var fecha = new Date();
+    var diaSemana = fecha.getDay(); 
+    var m = fecha.getHours() * 60 + fecha.getMinutes();
+    var n = "";
+    var h = "";
+
+    if (diaSemana === 6) {
+        if (m >= 240 && m < 360) {
+            n = "🎙️ Levántate alegre Sullana";
+            h = "04:00 a. m. - 06:00 a. m.";
+        } else if (m >= 360 && m < 450) {
+            n = "🎙️ Luciano Zapata Palacios \"El Urraco\"";
+            h = "06:00 a. m. - 07:30 a. m.";
+        } else if (m >= 450 && m < 540) {
+            n = "📰 Noticiero La Hora 7";
+            h = "07:30 a. m. - 09:00 a. m.";
+        } else if (m >= 540 && m < 600) {
+            n = "🎵 Percy Reyes";
+            h = "09:00 a. m. - 10:00 a. m.";
+        } else if (m >= 600 && m < 780) {
+            n = "🎙️ Carlos Ramírez";
+            h = "10:00 a. m. - 01:00 p. m.";
+        } else if (m >= 780 && m < 960) {
+            n = "🎙️ El Papacho";
+            h = "01:00 p. m. - 04:00 p. m.";
+        } else if (m >= 960 && m < 1080) {
+            n = "🎙️ Chicho Dueñas";
+            h = "04:00 p. m. - 06:00 p. m.";
+        } else if (m >= 1080 && m < 1140) {
+            n = "🎶 Oscar Balcázar \"La Hora del Recuerdo\"";
+            h = "06:00 p. m. - 07:00 p. m.";
+        } else if (m >= 1140 && m < 1200) {
+            n = "🎧 Viva el Deporte con Pocho Vera";
+            h = "07:00 p. m. - 08:00 p. m.";
+        } else {
+            n = "🎙️ Amanece con Stereo M";
+            h = "08:00 p. m. - 04:00 a. m.";
+        }
+    } else if (diaSemana === 0) {
+        if (m >= 240 && m < 480) {
+            n = "🎙️ Levántate alegre Sullana";
+            h = "04:00 a. m. - 08:00 a. m.";
+        } else if (m >= 480 && m < 600) {
+            n = "🎙️ Noticiero Panorama Dominical";
+            h = "08:00 a. m. - 10:00 a. m.";
+        } else if (m >= 600 && m < 720) {
+            n = "📰 Micky Rivera El Piloto";
+            h = "10:00 a. m. - 12:00 p. m.";
+        } else if (m >= 720 && m < 960) {
+            n = "🎵 Tardes activas";
+            h = "12:00 p. m. - 04:00 p. m.";
+        } else {
+            n = "🎙️ Amanece con Stereo M";
+            h = "04:00 p. m. - 04:00 a. m.";
+        }
+    } else {
+        if (m >= 240 && m < 360) {
+            n = "🎙️ Levántate con el pie derecho";
+            h = "04:00 a. m. - 06:00 a. m.";
+        } else if (m >= 360 && m < 450) {
+            n = "🎙️ El Sentimiento del Urraco";
+            h = "06:00 a. m. - 07:30 a. m.";
+        } else if (m >= 450 && m < 540) {
+            n = "📰 Noticiero La Hora 7";
+            h = "07:30 a. m. - 09:00 a. m.";
+        } else if (m >= 540 && m < 600) {
+            n = "🎵 Cañonazos de Oro";
+            h = "09:00 a. m. - 10:00 a. m.";
+        } else if (m >= 600 && m < 780) {
+            n = "🎙️ Carlos Ramírez";
+            h = "10:00 a. m. - 01:00 p. m.";
+        } else if (m >= 780 && m < 960) {
+            n = "🎙️ El Papacho";
+            h = "01:00 p. m. - 04:00 p. m.";
+        } else if (m >= 960 && m < 1080) {
+            n = "🎙️ Chicho Dueñas";
+            h = "04:00 p. m. - 06:00 p. m.";
+        } else if (m >= 1080 && m < 1140) {
+            n = "🎶 Oscar Balcázar \"La Hora del Recuerdo\"";
+            h = "06:00 p. m. - 07:00 p. m.";
+        } else if (m >= 1140 && m < 1200) {
+            n = "🎧 Viva el Deporte con Pocho Vera";
+            h = "07:00 p. m. - 08:00 p. m.";
+        } else {
+            n = "🎙️ Amanece con Stereo M";
+            h = "08:00 p. m. - 04:00 a. m.";
+        }
+    }
+
+    document.getElementById("locutor").innerHTML = "📻 <b>" + n + "</b>";
+    document.getElementById("horario").innerHTML = "🕙 " + h;
+}
+ap();
+setInterval(ap,60000);
 </script>
 <script id="sonic_js" data-port="8108" src="https://sonic.globalstream.pro/cp/widgets.js?r=906"></script>
 </body></html>
