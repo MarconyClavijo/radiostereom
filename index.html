@@ -852,16 +852,26 @@ player.addEventListener("ended", function () {
 });
 
 
-// 🎵 ACTUALIZAR CANCIÓN
+// 🎵 ACTUALIZAR CANCIÓN Y PORTADA
 setInterval(() => {
 
-    if (
-        typeof sonic_data !== "undefined" &&
-        sonic_data.songtitle
-    ) {
+    if (typeof sonic_data !== "undefined") {
 
-        document.getElementById("sonic_title").textContent =
-            sonic_data.songtitle;
+        // 🎵 TÍTULO DE LA CANCIÓN
+        if (sonic_data.songtitle) {
+
+            document.getElementById("sonic_title").textContent =
+                sonic_data.songtitle;
+
+        }
+
+        // 🖼️ PORTADA AUTOMÁTICA
+        if (sonic_data.art) {
+
+            document.getElementById("song-cover").src =
+                sonic_data.art;
+
+        }
 
     }
 
