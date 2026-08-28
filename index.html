@@ -852,30 +852,39 @@ player.addEventListener("ended", function () {
 });
 
 
-// 🎵 ACTUALIZAR CANCIÓN Y PORTADA
-setInterval(() => {
+// 🎵 ACTUALIZAR CANCIÓN Y PORTADA DESDE SONIC
+async function actualizarCancion() {
 
-    if (typeof sonic_data !== "undefined") {
+    try {
 
-        // 🎵 TÍTULO DE LA CANCIÓN
-        if (sonic_data.songtitle) {
+        const respuesta = await fetch(
+            "https://sonic.globalstream.pro/cp/get_info.php?p=8108"
+        );
 
+        const datos = await respuesta.json();
+
+        // 🎵 TÍTULO
+        if (datos.title) {
             document.getElementById("sonic_title").textContent =
-                sonic_data.songtitle;
-
+                datos.title;
         }
 
-        // 🖼️ PORTADA AUTOMÁTICA
-        if (sonic_data.art) {
-
+        // 🖼️ PORTADA
+        if (datos.art) {
             document.getElementById("song-cover").src =
-                sonic_data.art;
-
+                datos.art;
         }
+
+    } catch (error) {
+
+        console.log("No se pudo obtener la información de Sonic:", error);
 
     }
+}
 
-}, 2000);
+// Actualizar cada 5 segundos
+actualizarCancion();
+setInterval(actualizarCancion, 5000);
 let i=0;const slides=document.querySelectorAll(".slide");
 setInterval(()=>{slides[i].classList.remove("active");i=(i+1)%slides.length;slides[i].classList.add("active");},5000);
 
