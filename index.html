@@ -39,8 +39,149 @@ audio{width:100%}
 .live{color:#e60000;font-weight:bold;margin:10px 0}
 #song-title{font-weight:bold;color:#0b3d91;margin-bottom:15px}
 .buttons a{display:block;text-decoration:none;background:var(--amarillo);color:#111;padding:12px;border-radius:30px;text-align:center;margin-bottom:10px;font-weight:bold}
-.events{max-width:1100px;margin:20px auto;padding:0 20px}
-.events h2{text-align:center;color:#0b3d91}
+/* =========================
+   EVENTOS PROFESIONALES
+========================= */
+
+.events{
+max-width:1100px;
+margin:30px auto;
+padding:0 20px;
+}
+
+.events h2{
+text-align:center;
+color:#0b3d91;
+font-size:28px;
+margin-bottom:25px;
+}
+
+.events-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+}
+
+.event-card{
+background:#fff;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 5px 18px rgba(0,0,0,.12);
+transition:transform .3s ease;
+}
+
+.event-card:hover{
+transform:translateY(-6px);
+}
+
+.event-card img{
+width:100%;
+height:220px;
+object-fit:cover;
+display:block;
+}
+
+.event-info{
+padding:18px;
+}
+
+.event-category{
+display:inline-block;
+background:#e60000;
+color:#fff;
+font-size:11px;
+font-weight:bold;
+padding:6px 12px;
+border-radius:20px;
+margin-bottom:10px;
+}
+
+.event-info h3{
+color:#0b3d91;
+margin:5px 0 10px;
+font-size:21px;
+}
+
+.event-info p{
+font-size:15px;
+line-height:1.6;
+color:#555;
+}
+
+.event-info button{
+background:#ffd700;
+border:none;
+padding:11px 20px;
+border-radius:25px;
+font-weight:bold;
+cursor:pointer;
+font-size:14px;
+}
+
+.event-detail{
+display:none;
+background:#fff;
+border-radius:18px;
+padding:25px;
+box-shadow:0 5px 18px rgba(0,0,0,.12);
+max-width:850px;
+margin:0 auto;
+}
+
+.event-detail.active{
+display:block;
+}
+
+.event-detail h1{
+color:#0b3d91;
+font-size:32px;
+margin:10px 0 20px;
+}
+
+.event-detail img{
+width:100%;
+max-height:500px;
+object-fit:cover;
+border-radius:12px;
+margin-bottom:20px;
+}
+
+.event-content{
+font-size:18px;
+line-height:1.8;
+color:#333;
+}
+
+.volver{
+background:#0b3d91;
+color:white;
+border:none;
+padding:11px 20px;
+border-radius:25px;
+font-weight:bold;
+cursor:pointer;
+margin-bottom:20px;
+}
+
+@media(max-width:768px){
+
+.events-grid{
+grid-template-columns:1fr;
+}
+
+.event-card img{
+height:auto;
+}
+
+.event-detail{
+padding:18px;
+}
+
+.event-detail h1{
+font-size:26px;
+}
+
+}
 .slider{position:relative;max-width:420px;margin:0 auto}
 .slide{display:none}
 .slide.active{display:block}
@@ -91,16 +232,373 @@ footer{background:#0b3d91;color:#fff;text-align:center;padding:18px;margin-top:3
     <a href="https://wa.me/51942883375" target="_blank">📢 Publicidad</a>
 </div>
 
+<section class="events" id="eventos">
+
+<h2>🎉 Entérate de los Eventos</h2>
+
+<!-- =========================
+     LISTA DE LOS 5 EVENTOS
+========================= -->
+
+<div id="listaEventos" class="events-grid">
+
+
+<!-- =========================
+     EVENTO 1
+========================= -->
+
+<div class="event-card">
+
+    <img src="http://imgfz.com/i/I1TytP3.jpeg" alt="Evento 1">
+
+    <div class="event-info">
+
+        <span class="event-category">EVENTO</span>
+
+        <!-- ESCRIBE AQUÍ EL TÍTULO DEL EVENTO -->
+        <h3>Feliz 30 Aniversario de Lb. Luchito Burgos</h3>
+
+        <!-- ESCRIBE AQUÍ UNA DESCRIPCIÓN CORTA -->
+        <p>
+            ¡Se armó el tono en Bellavista! Celebramos los 30 años de Luchito Burgos y Orquesta junto a Miguel Ángel, Los Reyes y más artistas sorpresa en vivo. El evento es 100% gratuito. ¡Haz clic en "Ver Evento" y entérate de todo!
+        </p>
+
+        <button onclick="abrirEvento('feliz-aniversario-lb')">
+            VER EVENTO →
+        </button>
+
+    </div>
+
 </div>
-<section class="events">
-<h2>🎉 Entérate de los eventos</h2>
-<div class="slider">
-<div class="slide active"><img src="http://imgfz.com/i/I1TytP3.jpeg"></div>
-<div class="slide"><img src="http://imgfz.com/i/qDfcLoT.jpeg"></div>
-<div class="slide"><img src="http://imgfz.com/i/OJqw2sg.jpeg"></div>
-<div class="slide"><img src="http://imgfz.com/i/aW3CMwj.png"></div>
-<div class="slide"><img src="http://imgfz.com/i/gFXZeQc.jpeg"></div>
+
+
+<!-- =========================
+     EVENTO 2
+========================= -->
+
+<div class="event-card">
+
+    <img src="http://imgfz.com/i/qDfcLoT.jpeg" alt="Evento 2">
+
+    <div class="event-info">
+
+        <span class="event-category">EVENTO</span>
+
+        <!-- ESCRIBE AQUÍ EL TÍTULO DEL EVENTO -->
+        <h3>Gran Concierto: Feliz 50 Aniversario de El Porvenir - Bellavista</h3>
+
+        <!-- ESCRIBE AQUÍ UNA DESCRIPCIÓN CORTA -->
+        <p>
+            Las Voces Históricas de Armonía 10 llegan al Parque de El Porvenir para celebrar su 50 Aniversario. No te pierdas a Chechi Saavedra, Marco Yacila, Martín Pérez y el Gato Bazán este sábado 29 de agosto a las 8:00 PM en Bellavista. ¡Haz clic en "Ver Evento" y Entérate de todo!
+        </p>
+
+        <button onclick="abrirEvento('feliz-bodas-de-oro-porvenir')">
+            VER EVENTO →
+        </button>
+
+    </div>
+
 </div>
+
+
+<!-- =========================
+     EVENTO 3
+========================= -->
+
+<div class="event-card">
+
+    <img src="http://imgfz.com/i/OJqw2sg.jpeg" alt="Evento 3">
+
+    <div class="event-info">
+
+        <span class="event-category">EVENTO</span>
+
+        <!-- ESCRIBE AQUÍ EL TÍTULO DEL EVENTO -->
+        <h3>TÍTULO DEL EVENTO 3</h3>
+
+        <!-- ESCRIBE AQUÍ UNA DESCRIPCIÓN CORTA -->
+        <p>
+            AQUÍ VA UNA DESCRIPCIÓN CORTA DEL EVENTO PARA MOSTRAR
+            UN RESUMEN DE LA ACTIVIDAD.
+        </p>
+
+        <button onclick="abrirEvento('evento3')">
+            VER EVENTO →
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     EVENTO 4
+========================= -->
+
+<div class="event-card">
+
+    <img src="http://imgfz.com/i/aW3CMwj.png" alt="Evento 4">
+
+    <div class="event-info">
+
+        <span class="event-category">EVENTO</span>
+
+        <!-- ESCRIBE AQUÍ EL TÍTULO DEL EVENTO -->
+        <h3>TÍTULO DEL EVENTO 4</h3>
+
+        <!-- ESCRIBE AQUÍ UNA DESCRIPCIÓN CORTA -->
+        <p>
+            AQUÍ VA UNA DESCRIPCIÓN CORTA DEL EVENTO PARA INVITAR
+            A LAS PERSONAS A CONOCER TODOS LOS DETALLES.
+        </p>
+
+        <button onclick="abrirEvento('evento4')">
+            VER EVENTO →
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     EVENTO 5
+========================= -->
+
+<div class="event-card">
+
+    <img src="http://imgfz.com/i/gFXZeQc.jpeg" alt="Evento 5">
+
+    <div class="event-info">
+
+        <span class="event-category">EVENTO</span>
+
+        <!-- ESCRIBE AQUÍ EL TÍTULO DEL EVENTO -->
+        <h3>TÍTULO DEL EVENTO 5</h3>
+
+        <!-- ESCRIBE AQUÍ UNA DESCRIPCIÓN CORTA -->
+        <p>
+            AQUÍ VA UNA DESCRIPCIÓN CORTA DEL EVENTO PARA QUE
+            EL PÚBLICO QUIERA INGRESAR Y LEER MÁS.
+        </p>
+
+        <button onclick="abrirEvento('evento5')">
+            VER EVENTO →
+        </button>
+
+    </div>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================================
+     INFORMACIÓN COMPLETA DEL EVENTO 1
+========================================= -->
+
+<div id="feliz-aniversario-lb" class="event-detail">
+
+<button class="volver" onclick="cerrarEvento()">
+← Volver a los Eventos
+</button>
+
+<span class="event-category">EVENTO</span>
+
+<!-- TÍTULO COMPLETO DEL EVENTO -->
+<h1>Feliz 30 Aniversario de Lb. Luchito Burgos</h1>
+
+<img src="http://imgfz.com/i/I1TytP3.jpeg" alt="Evento 1">
+
+<div class="event-content">
+
+<!-- =================================
+     AQUÍ VA LA DESCRIPCIÓN COMPLETA
+     DEL EVENTO 1
+================================= -->
+
+<p>
+¡Se armó la fiesta en Bellavista!
+</p>
+Ven a celebrar a lo grande el 30 Aniversario de Lb. Luchito Burgos en un evento espectacular y totalmente gratuito para toda la familia.
+<p>
+Disfruta de una tarde llena de ritmo, sabor y la mejor música en vivo con una cartelera artística de primer nivel:Luchito Burgos y Orquesta (El homenajeado de la tarde)Miguel ÁngelAgrupación Musical Los Reyes (Son Criollo y más...)Plusito (Edgar Flores)William Salazar "El Chamaco" y Orquesta (Desde Sullana - Piura)
+</p>
+¡Te esperamos para celebrar juntos tres décadas de trayectoria musical!
+<p>
+📅 Fecha: Domingo 30 de Agosto<br>
+📍 Lugar: Calle Bernal Cdra. 3 Bellavista<br>
+🕒 Hora: Desde la 1:00 PM
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================================
+     INFORMACIÓN COMPLETA DEL EVENTO 2
+========================================= -->
+
+<div id="feliz-bodas-de-oro-porvenir" class="event-detail">
+
+<button class="volver" onclick="cerrarEvento()">
+← Volver a los Eventos
+</button>
+
+<span class="event-category">EVENTO</span>
+
+<h1>Gran Concierto: Feliz 50 Aniversario de El Porvenir - Bellavista</h1>
+
+<img src="http://imgfz.com/i/qDfcLoT.jpeg" alt="Evento 2">
+
+<div class="event-content">
+
+<!-- AQUÍ VA LA DESCRIPCIÓN COMPLETA DEL EVENTO 2 -->
+
+<p>
+¡Las leyendas de la cumbia piurana regresan a los escenarios para una noche histórica!
+</p>
+Acompáñanos a celebrar a lo grande el 50 Aniversario del sector El Porvenir en Bellavista - Sullana con un mega evento que te hará bailar y recordar los mejores años de nuestra música.El plato fuerte de la noche será el gran show de las Voces Históricas de Armonía 10, reuniendo en un mismo escenario a las personalidades más icónicas de la universidad de la cumbia:
+<p>
+Aquí puedes escribir todos los detalles, información de los artistas,
+organización, actividades y cualquier información importante.
+</p>
+Chechi SaavedraMarco YacilaMartín PérezGato BazánDisfruta en vivo de los grandes éxitos que marcaron una época dorada en la cumbia peruana en una fiesta comunitaria llena de energía, baile y mucha nostalgia.
+<p>
+📅 Fecha: Sábado 29 de agosto<br>
+📍 Lugar: Parque de El Porvenir (Bellavista, Sullana)<br>
+🕒 Hora: Desde las 8:00 PM.
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================================
+     INFORMACIÓN COMPLETA DEL EVENTO 3
+========================================= -->
+
+<div id="evento3" class="event-detail">
+
+<button class="volver" onclick="cerrarEvento()">
+← Volver a los Eventos
+</button>
+
+<span class="event-category">EVENTO</span>
+
+<h1>TÍTULO DEL EVENTO 3</h1>
+
+<img src="http://imgfz.com/i/OJqw2sg.jpeg" alt="Evento 3">
+
+<div class="event-content">
+
+<!-- AQUÍ VA LA DESCRIPCIÓN COMPLETA DEL EVENTO 3 -->
+
+<p>
+AQUÍ VA LA DESCRIPCIÓN COMPLETA DEL EVENTO 3.
+</p>
+
+<p>
+Aquí puedes colocar toda la información que quieras compartir
+con tus oyentes y visitantes de Radio Stereo M.
+</p>
+
+<p>
+📅 Fecha: AQUÍ VA LA FECHA<br>
+📍 Lugar: AQUÍ VA EL LUGAR<br>
+🕒 Hora: AQUÍ VA LA HORA
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================================
+     INFORMACIÓN COMPLETA DEL EVENTO 4
+========================================= -->
+
+<div id="evento4" class="event-detail">
+
+<button class="volver" onclick="cerrarEvento()">
+← Volver a los Eventos
+</button>
+
+<span class="event-category">EVENTO</span>
+
+<h1>TÍTULO DEL EVENTO 4</h1>
+
+<img src="http://imgfz.com/i/aW3CMwj.png" alt="Evento 4">
+
+<div class="event-content">
+
+<!-- AQUÍ VA LA DESCRIPCIÓN COMPLETA DEL EVENTO 4 -->
+
+<p>
+AQUÍ VA LA DESCRIPCIÓN COMPLETA DEL EVENTO 4.
+</p>
+
+<p>
+Aquí puedes escribir todos los detalles importantes de esta actividad.
+</p>
+
+<p>
+📅 Fecha: AQUÍ VA LA FECHA<br>
+📍 Lugar: AQUÍ VA EL LUGAR<br>
+🕒 Hora: AQUÍ VA LA HORA
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================================
+     INFORMACIÓN COMPLETA DEL EVENTO 5
+========================================= -->
+
+<div id="evento5" class="event-detail">
+
+<button class="volver" onclick="cerrarEvento()">
+← Volver a los Eventos
+</button>
+
+<span class="event-category">EVENTO</span>
+
+<h1>TÍTULO DEL EVENTO 5</h1>
+
+<img src="http://imgfz.com/i/gFXZeQc.jpeg" alt="Evento 5">
+
+<div class="event-content">
+
+<!-- AQUÍ VA LA DESCRIPCIÓN COMPLETA DEL EVENTO 5 -->
+
+<p>
+AQUÍ VA LA DESCRIPCIÓN COMPLETA DEL EVENTO 5.
+</p>
+
+<p>
+Aquí puedes colocar toda la información, artistas, invitados,
+programación y demás detalles.
+</p>
+
+<p>
+📅 Fecha: AQUÍ VA LA FECHA<br>
+📍 Lugar: AQUÍ VA EL LUGAR<br>
+🕒 Hora: AQUÍ VA LA HORA
+</p>
+
+</div>
+
+</div>
+
 </section>
 <footer>Diseño y desarrollo web por Marcony Clavijo | 942883375</footer>
 
@@ -211,6 +709,56 @@ function ap(){
 }
 ap();
 setInterval(ap,60000);
+
+function abrirEvento(id) {
+    document.getElementById("listaEventos").style.display = "none";
+
+    document.querySelectorAll(".event-detail").forEach(function(evento) {
+        evento.classList.remove("active");
+    });
+
+    const evento = document.getElementById(id);
+
+    if (evento) {
+        evento.classList.add("active");
+
+        // Cambia el enlace de la página
+        window.location.hash = id;
+
+        // Lleva al inicio del evento
+        evento.scrollIntoView({behavior: "smooth", block: "start"});
+    }
+}
+
+function cerrarEvento() {
+    document.querySelectorAll(".event-detail").forEach(function(evento) {
+        evento.classList.remove("active");
+    });
+
+    document.getElementById("listaEventos").style.display = "grid";
+
+    // Quita el #evento del enlace
+    history.replaceState(null, null, window.location.pathname);
+
+    // Regresa a la sección de eventos
+    document.getElementById("eventos").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+function abrirEventoDesdeEnlace() {
+    const id = window.location.hash.substring(1);
+
+    if (id && document.getElementById(id)) {
+        abrirEvento(id);
+    }
+}
+abrirEventoDesdeEnlace();
+
+window.addEventListener("hashchange", abrirEventoDesdeEnlace);
+
 </script>
 <script id="sonic_js" data-port="8108" src="https://sonic.globalstream.pro/cp/widgets.js?r=906"></script>
 </body></html>
+
+    
