@@ -198,6 +198,142 @@ font-size:26px;
 .slide img{width:100%;border-radius:15px;box-shadow:0 3px 10px rgba(0,0,0,.15)}
 footer{background:#0b3d91;color:#fff;text-align:center;padding:18px;margin-top:30px}
 @media(max-width:768px){.main{grid-template-columns:1fr}.slider{max-width:320px}}
+/* ========================================
+   REPRODUCTOR RADIO STEREO M
+======================================== */
+
+.radio-player-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.10);
+    text-align: center;
+}
+
+.radio-player-card h2 {
+    margin: 0 0 20px;
+    font-size: 22px;
+}
+
+/* BOTÓN + INFORMACIÓN AL AIRE */
+
+.player-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    text-align: left;
+}
+
+/* BOTÓN PLAY / STOP */
+
+.play-stop-btn {
+    width: 64px;
+    height: 64px;
+    min-width: 64px;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0b3d91, #1565c0);
+    color: #ffffff;
+    font-size: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(11,61,145,0.30);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.play-stop-btn:hover {
+    transform: scale(1.06);
+}
+
+.play-stop-btn:active {
+    transform: scale(0.94);
+}
+
+/* INFORMACIÓN AL AIRE */
+
+.on-air-info {
+    line-height: 1.5;
+}
+
+.on-air-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 3px;
+}
+
+.locutor {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.horario {
+    font-size: 14px;
+    color: #666;
+}
+
+/* CANCIÓN */
+
+.current-song {
+    margin-top: 22px;
+}
+
+.song-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    word-break: break-word;
+}
+
+#song-cover {
+    width: 190px;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 14px;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* CELULAR */
+
+@media (max-width: 480px) {
+
+    .radio-player-card {
+        padding: 18px 15px;
+    }
+
+    .player-top {
+        gap: 14px;
+    }
+
+    .play-stop-btn {
+        width: 58px;
+        height: 58px;
+        min-width: 58px;
+        font-size: 22px;
+    }
+
+    .on-air-title {
+        font-size: 15px;
+    }
+
+    .locutor {
+        font-size: 14px;
+    }
+
+    .horario {
+        font-size: 13px;
+    }
+
+    #song-cover {
+        width: 175px;
+        height: 175px;
+    }
+}
 </style>
 </head><body>
 <header>
@@ -221,17 +357,43 @@ footer{background:#0b3d91;color:#fff;text-align:center;padding:18px;margin-top:3
 <div class="banner"><img src="https://imgfz.com/i/fCXV3aO.jpeg"></div>
 <div class="main">
 
-<!-- REPRODUCTOR CON LA SECCIÓN AL AIRE INCORPORADA -->
-<div class="card">
+<!-- REPRODUCTOR RADIO STEREO M -->
+<div class="radio-player-card">
+
     <h2>🎧 Escúchanos en Vivo</h2>
-    <audio id="radioPlayer" controls preload="none"></audio>
-    <div class="live">🔴 EN VIVO</div>
-    <div id="song-title"><span id="sonic_title">Cargando canción...</span></div>
-    
-    <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
-    <h3 style="margin-top:0;">🟢 AL AIRE AHORA</h3>
-    <div id="locutor" style="margin-bottom: 5px;"></div>
-    <div id="horario"></div>
+
+    <div class="player-top">
+
+        <!-- BOTÓN PLAY / STOP -->
+        <button id="playStopBtn" class="play-stop-btn">
+            ▶
+        </button>
+
+        <!-- INFORMACIÓN AL AIRE -->
+        <div class="on-air-info">
+            <div class="on-air-title">🟢 AL AIRE AHORA</div>
+            <div class="locutor">📻 🎙️ Carlos Ramírez</div>
+            <div class="horario">🕙 10:00 a. m. - 01:00 p. m.</div>
+        </div>
+
+    </div>
+
+    <!-- REPRODUCTOR DE AUDIO OCULTO -->
+    <audio id="radioPlayer" preload="none"></audio>
+
+    <!-- CANCIÓN ACTUAL -->
+    <div class="current-song">
+
+        <div class="song-title">
+            🎵 <span id="sonic_title">Cargando canción...</span>
+        </div>
+
+        <img id="song-cover"
+             src="http://imgfz.com/i/DuneHqI.png"
+             alt="Portada de la canción">
+
+    </div>
+
 </div>
 
 <!-- BOTONES DE REDES Y APP -->
@@ -619,9 +781,91 @@ function toggleMenu() {
     links.classList.toggle("active");
 }
 
-const player=document.getElementById("radioPlayer");
-player.src="https://sonic.globalstream.pro/8108/stream?t="+Date.now();
-setInterval(()=>{if(typeof sonic_data!=="undefined"&&sonic_data.songtitle){document.getElementById("sonic_title").textContent=sonic_data.songtitle;}},2000);
+// ==========================================
+// REPRODUCTOR RADIO STEREO M
+// PLAY / STOP
+// ==========================================
+
+const player = document.getElementById("radioPlayer");
+const playStopBtn = document.getElementById("playStopBtn");
+
+const STREAM_URL = "https://sonic.globalstream.pro/8108/stream";
+
+let radioPlaying = false;
+
+
+// ▶ PLAY
+playStopBtn.addEventListener("click", function () {
+
+    if (!radioPlaying) {
+
+        // Nueva conexión al streaming
+        player.src = STREAM_URL + "?nocache=" + Date.now();
+
+        player.load();
+
+        player.play()
+            .then(() => {
+
+                radioPlaying = true;
+
+                // Cambiar botón a STOP
+                playStopBtn.textContent = "⏹";
+                playStopBtn.setAttribute("aria-label", "Detener radio");
+
+            })
+            .catch(error => {
+
+                console.log("No se pudo reproducir:", error);
+
+            });
+
+    } else {
+
+        // ⏹ STOP COMPLETO
+        player.pause();
+
+        // Eliminar la fuente del audio
+        player.removeAttribute("src");
+
+        // Liberar el buffer
+        player.load();
+
+        radioPlaying = false;
+
+        // Volver a PLAY
+        playStopBtn.textContent = "▶";
+        playStopBtn.setAttribute("aria-label", "Reproducir radio");
+
+    }
+
+});
+
+
+// Si el streaming termina o se desconecta
+player.addEventListener("ended", function () {
+
+    radioPlaying = false;
+
+    playStopBtn.textContent = "▶";
+
+});
+
+
+// 🎵 ACTUALIZAR CANCIÓN
+setInterval(() => {
+
+    if (
+        typeof sonic_data !== "undefined" &&
+        sonic_data.songtitle
+    ) {
+
+        document.getElementById("sonic_title").textContent =
+            sonic_data.songtitle;
+
+    }
+
+}, 2000);
 let i=0;const slides=document.querySelectorAll(".slide");
 setInterval(()=>{slides[i].classList.remove("active");i=(i+1)%slides.length;slides[i].classList.add("active");},5000);
 
